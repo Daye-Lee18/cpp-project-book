@@ -390,11 +390,27 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">오늘 만들 것</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">필요한 개념</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">최소 동작 코드</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">오늘의 결과물</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">오늘 배울 개념</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1단계: 사각형 넓이 구하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2단계: 원 클래스 추가하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3단계: 공통 부모 클래스 만들기</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">코드 읽기</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">4단계: 상속으로 도형 만들기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector">5단계: vector에 여러 도형 저장하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v1">프로젝트 v1: 도형 하나의 넓이 계산하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v2">프로젝트 v2: 부모 클래스 도입하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v3">프로젝트 v3: 여러 도형 관리하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">자주 나는 에러</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual">부모 클래스의 소멸자를 virtual로 만들지 않은 경우</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#override">override 함수 이름이 틀린 경우</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delete">delete를 빠뜨린 경우</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mission">Mission</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">체크리스트</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">체크리스트</a></li>
 </ul>
             </nav>
         </div>
@@ -409,20 +425,183 @@
   <section id="id1">
 <h1>06. 도형 관리 시스템<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <section id="id2">
-<h2>오늘 만들 것<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>공통 부모 클래스 <code class="docutils literal notranslate"><span class="pre">Shape</span></code>를 만들고, 원과 사각형의 넓이를 다형성으로 계산합니다.</p>
+<h2>오늘의 결과물<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>이번 장에서는 여러 도형의 넓이를 같은 방식으로 계산하는 도형 관리 시스템을 만듭니다.</p>
+<p>실행 예시는 다음과 같습니다.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>12
+78.5
+</pre></div>
+</div>
+<p>이번 장의 핵심은 서로 다른 클래스의 객체를 부모 타입으로 함께 다루는 것입니다. 사각형과 원은 계산 방법이 다르지만, 둘 다 <code class="docutils literal notranslate"><span class="pre">area()</span></code>라는 같은 이름의 함수로 넓이를 구하게 만듭니다.</p>
 </section>
 <section id="id3">
-<h2>필요한 개념<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2>오늘 배울 개념<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>상속</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">virtual</span></code> 함수</p></li>
-<li><p>다형성</p></li>
-<li><p>포인터</p></li>
+<li><p>부모 클래스와 자식 클래스 만들기</p></li>
+<li><p>상속으로 공통 규칙 표현하기</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">virtual</span></code> 함수와 <code class="docutils literal notranslate"><span class="pre">override</span></code> 사용하기</p></li>
+<li><p>포인터로 자식 객체 다루기</p></li>
+<li><p>동적 할당한 객체를 <code class="docutils literal notranslate"><span class="pre">delete</span></code>로 정리하기</p></li>
 </ul>
 </section>
 <section id="id4">
-<h2>최소 동작 코드<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h2>1단계: 사각형 넓이 구하기<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>먼저 사각형 하나의 넓이를 구하는 클래스를 만듭니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Rectangle</span><span class="w"> </span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Rectangle</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="p">;</span>
+<span class="w">        </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">area</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Rectangle</span><span class="w"> </span><span class="n">rect</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">rect</span><span class="p">.</span><span class="n">area</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>2단계: 원 클래스 추가하기<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>원은 반지름으로 넓이를 계산합니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Circle</span><span class="w"> </span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">radius</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Circle</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">area</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mf">3.14</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radius</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radius</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>사각형과 원은 내부 데이터가 다르지만, 둘 다 <code class="docutils literal notranslate"><span class="pre">area()</span></code>라는 함수를 가질 수 있습니다.</p>
+</section>
+<section id="id6">
+<h2>3단계: 공통 부모 클래스 만들기<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<p>도형들이 공통으로 가져야 하는 기능을 부모 클래스에 적습니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">area</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">Shape</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<section id="id7">
+<h3>코드 읽기<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">virtual</span></code>: 자식 클래스의 함수가 실행될 수 있게 합니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">0</span></code>: 부모 클래스에서는 구현하지 않고, 자식 클래스가 반드시 구현해야 한다는 뜻입니다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">virtual</span> <span class="pre">~Shape()</span></code>: 부모 포인터로 삭제할 때 안전하게 정리되도록 합니다.</p></li>
+</ul>
+</section>
+</section>
+<section id="id8">
+<h2>4단계: 상속으로 도형 만들기<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<p>자식 클래스는 <code class="docutils literal notranslate"><span class="pre">Shape</span></code>를 상속하고 <code class="docutils literal notranslate"><span class="pre">area()</span></code>를 구현합니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Rectangle</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Shape</span><span class="w"> </span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Rectangle</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">width</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="w"> </span><span class="n">height</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">area</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">override</span></code>는 부모 클래스의 가상 함수를 자식 클래스에서 다시 정의한다는 뜻입니다.</p>
+</section>
+<section id="vector">
+<h2>5단계: vector에 여러 도형 저장하기<a class="headerlink" href="#vector" title="Permalink to this heading">#</a></h2>
+<p>사각형과 원은 서로 다른 타입입니다. 하지만 둘 다 <code class="docutils literal notranslate"><span class="pre">Shape</span></code>의 자식이므로 <code class="docutils literal notranslate"><span class="pre">Shape*</span></code>로 함께 저장할 수 있습니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Shape</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">shapes</span><span class="p">;</span>
+<span class="n">shapes</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Rectangle</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">));</span>
+<span class="n">shapes</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Circle</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>사용이 끝난 객체는 직접 정리해야 합니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Shape</span><span class="o">*</span><span class="w"> </span><span class="n">shape</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">shapes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">shape</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="v1">
+<h2>프로젝트 v1: 도형 하나의 넓이 계산하기<a class="headerlink" href="#v1" title="Permalink to this heading">#</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Rectangle</span><span class="w"> </span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Rectangle</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">width</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="w"> </span><span class="n">height</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">area</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Rectangle</span><span class="w"> </span><span class="n">rect</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">rect</span><span class="p">.</span><span class="n">area</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="v2">
+<h2>프로젝트 v2: 부모 클래스 도입하기<a class="headerlink" href="#v2" title="Permalink to this heading">#</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">area</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">Shape</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>사각형과 원은 <code class="docutils literal notranslate"><span class="pre">Shape</span></code>를 상속합니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Circle</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Shape</span><span class="w"> </span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">radius</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Circle</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">radius</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">area</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mf">3.14</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radius</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">radius</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="v3">
+<h2>프로젝트 v3: 여러 도형 관리하기<a class="headerlink" href="#v3" title="Permalink to this heading">#</a></h2>
+<p>최종 코드는 다음과 같습니다.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
 <span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
@@ -476,20 +655,51 @@
 </pre></div>
 </div>
 </section>
+<section id="id9">
+<h2>자주 나는 에러<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<section id="virtual">
+<h3>부모 클래스의 소멸자를 virtual로 만들지 않은 경우<a class="headerlink" href="#virtual" title="Permalink to this heading">#</a></h3>
+<p>부모 포인터로 자식 객체를 삭제할 때는 부모 소멸자를 <code class="docutils literal notranslate"><span class="pre">virtual</span></code>로 만드는 것이 안전합니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">Shape</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
+</pre></div>
+</div>
+</section>
+<section id="override">
+<h3>override 함수 이름이 틀린 경우<a class="headerlink" href="#override" title="Permalink to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span><span class="w"> </span><span class="nf">areas</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>부모 클래스의 함수 이름은 <code class="docutils literal notranslate"><span class="pre">area()</span></code>입니다. 이름이 다르면 재정의가 아닙니다.</p>
+</section>
+<section id="delete">
+<h3>delete를 빠뜨린 경우<a class="headerlink" href="#delete" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">new</span></code>로 만든 객체는 사용이 끝나면 <code class="docutils literal notranslate"><span class="pre">delete</span></code>해야 합니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Shape</span><span class="o">*</span><span class="w"> </span><span class="n">shape</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">shapes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">shape</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
 <section id="mission">
 <h2>Mission<a class="headerlink" href="#mission" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Triangle</span></code> 클래스를 추가하세요.</p></li>
-<li><p>각 도형의 이름도 출력하세요.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">unique_ptr</span></code> 버전으로 개선하세요.</p></li>
+<li><p>각 도형의 이름도 함께 출력하세요.</p></li>
+<li><p>사용자에게 도형 종류와 값을 입력받아 추가하세요.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unique_ptr</span></code>를 사용해 <code class="docutils literal notranslate"><span class="pre">delete</span></code>가 필요 없는 버전으로 개선하세요.</p></li>
 </ul>
 </section>
-<section id="id5">
-<h2>체크리스트<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<section id="id10">
+<h2>체크리스트<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>부모 클래스와 자식 클래스를 만들 수 있다.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">virtual</span></code> 함수가 필요한 이유를 설명할 수 있다.</p></li>
+<li><p>순수 가상 함수의 의미를 설명할 수 있다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">override</span></code>를 사용해 자식 클래스에서 함수를 재정의할 수 있다.</p></li>
 <li><p>같은 타입의 포인터로 여러 자식 객체를 다룰 수 있다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">new</span></code>로 만든 객체를 <code class="docutils literal notranslate"><span class="pre">delete</span></code>로 정리해야 함을 설명할 수 있다.</p></li>
 </ul>
 </section>
 </section>
@@ -560,11 +770,27 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">오늘 만들 것</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">필요한 개념</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">최소 동작 코드</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">오늘의 결과물</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">오늘 배울 개념</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1단계: 사각형 넓이 구하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2단계: 원 클래스 추가하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3단계: 공통 부모 클래스 만들기</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">코드 읽기</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">4단계: 상속으로 도형 만들기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector">5단계: vector에 여러 도형 저장하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v1">프로젝트 v1: 도형 하나의 넓이 계산하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v2">프로젝트 v2: 부모 클래스 도입하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v3">프로젝트 v3: 여러 도형 관리하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">자주 나는 에러</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#virtual">부모 클래스의 소멸자를 virtual로 만들지 않은 경우</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#override">override 함수 이름이 틀린 경우</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#delete">delete를 빠뜨린 경우</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mission">Mission</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">체크리스트</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">체크리스트</a></li>
 </ul>
   </nav></div>
 

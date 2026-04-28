@@ -390,11 +390,24 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">오늘 만들 것</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">필요한 개념</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">최소 동작 코드</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">오늘의 결과물</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">오늘 배울 개념</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#int-box">1단계: int 값을 담는 Box 만들기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2단계: 함수 템플릿 이해하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#box">3단계: 클래스 템플릿으로 Box 만들기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4단계: 값이 없는 상태 표현하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5단계: 예외로 오류 처리하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v1-int-box">프로젝트 v1: int 전용 Box</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v2-box">프로젝트 v2: 템플릿 Box</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v3-box">프로젝트 v3: 빈 Box 예외 처리하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">자주 나는 에러</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">템플릿 자료형을 지정하지 않은 경우</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stdexcept">stdexcept 헤더를 빠뜨린 경우</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">예외를 처리하지 않은 경우</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mission">Mission</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">체크리스트</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">체크리스트</a></li>
 </ul>
             </nav>
         </div>
@@ -409,20 +422,199 @@
   <section id="id1">
 <h1>07. 템플릿과 예외 처리<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <section id="id2">
-<h2>오늘 만들 것<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>여러 자료형을 담을 수 있는 간단한 Generic Box를 만들고, 잘못된 접근을 예외로 처리합니다.</p>
+<h2>오늘의 결과물<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>이번 장에서는 여러 자료형을 담을 수 있는 <code class="docutils literal notranslate"><span class="pre">Box</span></code> 클래스를 만들고, 값이 없을 때 발생하는 오류를 예외로 처리합니다.</p>
+<p>실행 예시는 다음과 같습니다.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Error: Box is empty
+10
+</pre></div>
+</div>
+<p>이번 장의 핵심은 자료형이 달라도 같은 구조의 코드를 재사용하는 방법과, 정상 흐름으로 처리하기 어려운 오류를 분리하는 방법입니다.</p>
 </section>
 <section id="id3">
-<h2>필요한 개념<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2>오늘 배울 개념<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>function template</p></li>
-<li><p>class template</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">try</span></code>, <code class="docutils literal notranslate"><span class="pre">catch</span></code>, <code class="docutils literal notranslate"><span class="pre">throw</span></code></p></li>
-<li><p>예외 객체</p></li>
+<li><p>함수 템플릿으로 자료형에 독립적인 함수 만들기</p></li>
+<li><p>클래스 템플릿으로 여러 자료형을 담는 클래스 만들기</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">throw</span></code>로 오류 상황 알리기</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">try</span></code>, <code class="docutils literal notranslate"><span class="pre">catch</span></code>로 예외 처리하기</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">runtime_error</span></code>의 메시지 출력하기</p></li>
 </ul>
 </section>
+<section id="int-box">
+<h2>1단계: int 값을 담는 Box 만들기<a class="headerlink" href="#int-box" title="Permalink to this heading">#</a></h2>
+<p>먼저 정수 하나를 저장하고 꺼내는 클래스를 만듭니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">IntBox</span><span class="w"> </span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">get</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">IntBox</span><span class="w"> </span><span class="n">box</span><span class="p">;</span>
+<span class="w">    </span><span class="n">box</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">box</span><span class="p">.</span><span class="n">get</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>이 클래스는 <code class="docutils literal notranslate"><span class="pre">int</span></code>만 저장할 수 있습니다. <code class="docutils literal notranslate"><span class="pre">string</span></code>이나 <code class="docutils literal notranslate"><span class="pre">double</span></code>을 저장하려면 비슷한 클래스를 또 만들어야 합니다.</p>
+</section>
 <section id="id4">
-<h2>최소 동작 코드<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h2>2단계: 함수 템플릿 이해하기<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>템플릿은 자료형을 나중에 정하게 해 줍니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="n">T</span><span class="w"> </span><span class="n">bigger</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>같은 함수로 여러 자료형을 처리할 수 있습니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">bigger</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">bigger</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span><span class="w"> </span><span class="mf">1.2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="box">
+<h2>3단계: 클래스 템플릿으로 Box 만들기<a class="headerlink" href="#box" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Box</span></code>도 템플릿으로 만들면 여러 자료형을 저장할 수 있습니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Box</span><span class="w"> </span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">get</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>사용할 때 자료형을 정합니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Box</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">intBox</span><span class="p">;</span>
+<span class="n">Box</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stringBox</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>4단계: 값이 없는 상태 표현하기<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>값을 넣기 전에 <code class="docutils literal notranslate"><span class="pre">get()</span></code>을 호출하면 문제가 생깁니다. 값이 있는지 확인하기 위해 <code class="docutils literal notranslate"><span class="pre">hasValue</span></code>를 둡니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">hasValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">set</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+<span class="w">    </span><span class="n">hasValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h2>5단계: 예외로 오류 처리하기<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<p>값이 없을 때는 <code class="docutils literal notranslate"><span class="pre">throw</span></code>로 오류를 알립니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="w"> </span><span class="nf">get</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">hasValue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="n">runtime_error</span><span class="p">(</span><span class="s">&quot;Box is empty&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>예외가 발생할 수 있는 코드는 <code class="docutils literal notranslate"><span class="pre">try</span></code> 안에 두고, <code class="docutils literal notranslate"><span class="pre">catch</span></code>에서 처리합니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">box</span><span class="p">.</span><span class="n">get</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">runtime_error</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Error: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="v1-int-box">
+<h2>프로젝트 v1: int 전용 Box<a class="headerlink" href="#v1-int-box" title="Permalink to this heading">#</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">IntBox</span><span class="w"> </span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">get</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">IntBox</span><span class="w"> </span><span class="n">box</span><span class="p">;</span>
+<span class="w">    </span><span class="n">box</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">box</span><span class="p">.</span><span class="n">get</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="v2-box">
+<h2>프로젝트 v2: 템플릿 Box<a class="headerlink" href="#v2-box" title="Permalink to this heading">#</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Box</span><span class="w"> </span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="n">get</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Box</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">intBox</span><span class="p">;</span>
+<span class="w">    </span><span class="n">intBox</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">intBox</span><span class="p">.</span><span class="n">get</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">Box</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stringBox</span><span class="p">;</span>
+<span class="w">    </span><span class="n">stringBox</span><span class="p">.</span><span class="n">set</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">stringBox</span><span class="p">.</span><span class="n">get</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="v3-box">
+<h2>프로젝트 v3: 빈 Box 예외 처리하기<a class="headerlink" href="#v3-box" title="Permalink to this heading">#</a></h2>
+<p>최종 코드는 다음과 같습니다.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdexcept&gt;</span>
 <span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
@@ -463,20 +655,50 @@
 </pre></div>
 </div>
 </section>
+<section id="id7">
+<h2>자주 나는 에러<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<section id="id8">
+<h3>템플릿 자료형을 지정하지 않은 경우<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Box</span><span class="w"> </span><span class="n">box</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>클래스 템플릿을 사용할 때는 자료형을 지정합니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Box</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">box</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="stdexcept">
+<h3>stdexcept 헤더를 빠뜨린 경우<a class="headerlink" href="#stdexcept" title="Permalink to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">throw</span><span class="w"> </span><span class="n">runtime_error</span><span class="p">(</span><span class="s">&quot;Box is empty&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">runtime_error</span></code>를 사용하려면 다음 헤더가 필요합니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdexcept&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="id9">
+<h3>예외를 처리하지 않은 경우<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">throw</span></code>가 실행되었는데 처리하지 않으면 프로그램이 비정상 종료될 수 있습니다. 예외가 예상되는 코드는 <code class="docutils literal notranslate"><span class="pre">try-catch</span></code>로 감쌉니다.</p>
+</section>
+</section>
 <section id="mission">
 <h2>Mission<a class="headerlink" href="#mission" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Box&lt;string&gt;</span></code>을 만들어 보세요.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Box&lt;string&gt;</span></code>을 만들어 문자열을 저장해 보세요.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clear()</span></code> 함수를 추가해 Box를 다시 비우세요.</p></li>
 <li><p>Generic Stack을 구현하세요.</p></li>
-<li><p>빈 Stack에서 pop할 때 예외를 발생시키세요.</p></li>
+<li><p>빈 Stack에서 <code class="docutils literal notranslate"><span class="pre">pop()</span></code>할 때 예외를 발생시키세요.</p></li>
 </ul>
 </section>
-<section id="id5">
-<h2>체크리스트<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<section id="id10">
+<h2>체크리스트<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>템플릿으로 자료형에 독립적인 코드를 만들 수 있다.</p></li>
+<li><p>클래스 템플릿을 사용할 때 자료형을 지정할 수 있다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">throw</span></code>로 오류 상황을 알릴 수 있다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">try-catch</span></code>로 예외를 처리할 수 있다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">e.what()</span></code>으로 예외 메시지를 출력할 수 있다.</p></li>
 </ul>
 </section>
 </section>
@@ -547,11 +769,24 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">오늘 만들 것</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">필요한 개념</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">최소 동작 코드</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">오늘의 결과물</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">오늘 배울 개념</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#int-box">1단계: int 값을 담는 Box 만들기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2단계: 함수 템플릿 이해하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#box">3단계: 클래스 템플릿으로 Box 만들기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4단계: 값이 없는 상태 표현하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5단계: 예외로 오류 처리하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v1-int-box">프로젝트 v1: int 전용 Box</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v2-box">프로젝트 v2: 템플릿 Box</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v3-box">프로젝트 v3: 빈 Box 예외 처리하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">자주 나는 에러</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">템플릿 자료형을 지정하지 않은 경우</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stdexcept">stdexcept 헤더를 빠뜨린 경우</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">예외를 처리하지 않은 경우</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mission">Mission</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">체크리스트</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">체크리스트</a></li>
 </ul>
   </nav></div>
 

@@ -390,11 +390,24 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">오늘 만들 것</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">필요한 개념</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">최소 동작 코드</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">오늘의 결과물</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">오늘 배울 개념</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1단계: 이름과 전화번호 출력하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2단계: 클래스로 연락처 묶기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3단계: 출력 기능을 멤버 함수로 만들기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4단계: 생성자로 초기값 넣기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#private">5단계: private으로 데이터 보호하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v1">프로젝트 v1: 연락처 객체 하나 만들기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v2-vector">프로젝트 v2: vector에 여러 연락처 저장하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v3">프로젝트 v3: 입력받은 연락처 추가하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">자주 나는 에러</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">private 멤버에 직접 접근한 경우</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector">vector 헤더를 빠뜨린 경우</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">생성자 인자 개수가 맞지 않는 경우</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mission">Mission</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">체크리스트</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">체크리스트</a></li>
 </ul>
             </nav>
         </div>
@@ -409,21 +422,158 @@
   <section id="id1">
 <h1>04. 주소록 프로그램<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <section id="id2">
-<h2>오늘 만들 것<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>이름, 전화번호, 이메일을 저장하는 <code class="docutils literal notranslate"><span class="pre">Contact</span></code> 클래스를 만들고 여러 연락처를 관리합니다.</p>
+<h2>오늘의 결과물<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>이번 장에서는 이름과 전화번호를 저장하는 주소록 프로그램을 만듭니다.</p>
+<p>실행 예시는 다음과 같습니다.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Kim - 010-1111-2222
+Lee - 010-3333-4444
+</pre></div>
+</div>
+<p>이번 장의 핵심은 관련 있는 데이터를 하나의 타입으로 묶고, 여러 객체를 <code class="docutils literal notranslate"><span class="pre">vector</span></code>에 저장하는 것입니다.</p>
 </section>
 <section id="id3">
-<h2>필요한 개념<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2>오늘 배울 개념<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>class</p></li>
-<li><p>객체</p></li>
-<li><p>멤버 변수</p></li>
-<li><p>멤버 함수</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">vector</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">class</span></code>로 새 자료형 만들기</p></li>
+<li><p>멤버 변수와 멤버 함수 구분하기</p></li>
+<li><p>생성자로 객체 초기값 설정하기</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">private</span></code>과 <code class="docutils literal notranslate"><span class="pre">public</span></code>으로 접근 범위 나누기</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vector</span></code>에 객체 여러 개 저장하기</p></li>
 </ul>
 </section>
 <section id="id4">
-<h2>최소 동작 코드<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h2>1단계: 이름과 전화번호 출력하기<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>먼저 변수 두 개로 연락처 하나를 표현합니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Kim&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">phone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;010-1111-2222&quot;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; - &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">phone</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>이 방식은 연락처가 많아질수록 변수 관리가 어려워집니다.</p>
+</section>
+<section id="id5">
+<h2>2단계: 클래스로 연락처 묶기<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>이름과 전화번호는 항상 함께 다니는 데이터입니다. 이런 데이터는 클래스로 묶을 수 있습니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Contact</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">phone</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>사용은 다음처럼 합니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Contact</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="n">c</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Kim&quot;</span><span class="p">;</span>
+<span class="n">c</span><span class="p">.</span><span class="n">phone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;010-1111-2222&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h2>3단계: 출력 기능을 멤버 함수로 만들기<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<p>연락처 출력 방식도 <code class="docutils literal notranslate"><span class="pre">Contact</span></code> 안에 넣을 수 있습니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Contact</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">phone</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">print</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; - &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">phone</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>객체는 자신의 함수를 호출할 수 있습니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">.</span><span class="n">print</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h2>4단계: 생성자로 초기값 넣기<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<p>객체를 만든 뒤 값을 하나씩 넣는 대신, 생성자에서 처음 값을 받을 수 있습니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Contact</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">phone</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">Contact</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="w">        </span><span class="n">phone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">print</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; - &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">phone</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>이제 객체를 다음처럼 만들 수 있습니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Contact</span><span class="w"> </span><span class="n">c</span><span class="p">(</span><span class="s">&quot;Kim&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;010-1111-2222&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="private">
+<h2>5단계: private으로 데이터 보호하기<a class="headerlink" href="#private" title="Permalink to this heading">#</a></h2>
+<p>클래스 밖에서 멤버 변수를 마음대로 바꾸지 못하게 하려면 <code class="docutils literal notranslate"><span class="pre">private</span></code>에 둡니다. 대신 필요한 기능은 <code class="docutils literal notranslate"><span class="pre">public</span></code> 함수로 제공합니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Contact</span><span class="w"> </span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">phone</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Contact</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="w">        </span><span class="n">phone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">print</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; - &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">phone</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="v1">
+<h2>프로젝트 v1: 연락처 객체 하나 만들기<a class="headerlink" href="#v1" title="Permalink to this heading">#</a></h2>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Contact</span><span class="w"> </span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">phone</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Contact</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="w">        </span><span class="n">phone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">print</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; - &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">phone</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Contact</span><span class="w"> </span><span class="n">contact</span><span class="p">(</span><span class="s">&quot;Kim&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;010-1111-2222&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">contact</span><span class="p">.</span><span class="n">print</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="v2-vector">
+<h2>프로젝트 v2: vector에 여러 연락처 저장하기<a class="headerlink" href="#v2-vector" title="Permalink to this heading">#</a></h2>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
@@ -459,20 +609,68 @@
 </pre></div>
 </div>
 </section>
+<section id="v3">
+<h2>프로젝트 v3: 입력받은 연락처 추가하기<a class="headerlink" href="#v3" title="Permalink to this heading">#</a></h2>
+<p>연락처를 코드에 고정하지 않고 사용자에게 입력받을 수 있습니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="n">string</span><span class="w"> </span><span class="n">phone</span><span class="p">;</span>
+
+<span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Name: &quot;</span><span class="p">;</span>
+<span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Phone: &quot;</span><span class="p">;</span>
+<span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">phone</span><span class="p">;</span>
+
+<span class="n">contacts</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">Contact</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">phone</span><span class="p">));</span>
+</pre></div>
+</div>
+</section>
+<section id="id8">
+<h2>자주 나는 에러<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<section id="id9">
+<h3>private 멤버에 직접 접근한 경우<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">contact</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Park&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">name</span></code>이 <code class="docutils literal notranslate"><span class="pre">private</span></code>이면 클래스 밖에서 직접 접근할 수 없습니다. 값을 바꾸는 기능이 필요하면 public 멤버 함수를 만들어야 합니다.</p>
+</section>
+<section id="vector">
+<h3>vector 헤더를 빠뜨린 경우<a class="headerlink" href="#vector" title="Permalink to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Contact</span><span class="o">&gt;</span><span class="w"> </span><span class="n">contacts</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">vector</span></code>를 사용하려면 파일 위쪽에 다음 코드를 추가해야 합니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h3>생성자 인자 개수가 맞지 않는 경우<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Contact</span><span class="w"> </span><span class="n">c</span><span class="p">(</span><span class="s">&quot;Kim&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>생성자가 이름과 전화번호 두 개를 받도록 되어 있다면 두 값을 모두 전달해야 합니다.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">Contact</span><span class="w"> </span><span class="n">c</span><span class="p">(</span><span class="s">&quot;Kim&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;010-1111-2222&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
 <section id="mission">
 <h2>Mission<a class="headerlink" href="#mission" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>이메일 멤버 변수를 추가하세요.</p></li>
-<li><p>이름으로 연락처를 검색하세요.</p></li>
-<li><p>사용자가 연락처를 입력할 수 있게 만드세요.</p></li>
+<li><p>이름으로 연락처를 검색하는 함수를 만드세요.</p></li>
+<li><p>사용자가 연락처를 여러 개 입력할 수 있게 만드세요.</p></li>
+<li><p>연락처 개수를 출력하세요.</p></li>
 </ul>
 </section>
-<section id="id5">
-<h2>체크리스트<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<section id="id11">
+<h2>체크리스트<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>클래스를 정의할 수 있다.</p></li>
-<li><p>객체를 생성할 수 있다.</p></li>
+<li><p>객체를 생성하고 멤버 함수를 호출할 수 있다.</p></li>
+<li><p>생성자로 객체 초기값을 설정할 수 있다.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">private</span></code>과 <code class="docutils literal notranslate"><span class="pre">public</span></code>의 차이를 설명할 수 있다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vector</span></code>에 객체를 저장하고 반복문으로 출력할 수 있다.</p></li>
 </ul>
 </section>
 </section>
@@ -543,11 +741,24 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">오늘 만들 것</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">필요한 개념</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">최소 동작 코드</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">오늘의 결과물</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">오늘 배울 개념</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1단계: 이름과 전화번호 출력하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2단계: 클래스로 연락처 묶기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3단계: 출력 기능을 멤버 함수로 만들기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4단계: 생성자로 초기값 넣기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#private">5단계: private으로 데이터 보호하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v1">프로젝트 v1: 연락처 객체 하나 만들기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v2-vector">프로젝트 v2: vector에 여러 연락처 저장하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#v3">프로젝트 v3: 입력받은 연락처 추가하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">자주 나는 에러</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">private 멤버에 직접 접근한 경우</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector">vector 헤더를 빠뜨린 경우</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">생성자 인자 개수가 맞지 않는 경우</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mission">Mission</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">체크리스트</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">체크리스트</a></li>
 </ul>
   </nav></div>
 
