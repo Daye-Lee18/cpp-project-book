@@ -1,0 +1,19 @@
+format: jb-book
+root: intro
+chapters:
+  - file: chapters/00_setup
+  - file: chapters/01_calculator
+  - file: chapters/02_number_game
+  - file: chapters/03_grade_manager
+  - file: chapters/04_contact_class
+  - file: chapters/05_bank_account
+  - file: chapters/06_shape_polymorphism
+  - file: chapters/07_template_exception
+  - file: chapters/08_todo_stl_file
+  - file: chapters/09_final_project
+  - file: assignments/index
+    sections:
+      - file: assignments/assignment_01
+      - file: assignments/assignment_02
+      - file: assignments/final_project
+

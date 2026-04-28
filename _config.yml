@@ -1,0 +1,19 @@
+title: C++ 입문에서 프로젝트까지
+author: Daye Lee
+execute:
+  execute_notebooks: "off"
+exclude_patterns:
+  - README.md
+repository:
+  url: https://github.com/dayelee/cpp-project-book
+  path_to_book: ""
+  branch: main
+html:
+  use_repository_button: true
+  use_issues_button: true
+  use_edit_page_button: true
+parse:
+  myst_enable_extensions:
+    - colon_fence
+    - deflist
+    - html_image
