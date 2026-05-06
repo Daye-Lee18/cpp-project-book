@@ -5,7 +5,7 @@ execute:
 exclude_patterns:
   - README.md
 repository:
-  url: https://github.com/dayelee/cpp-project-book
+  url: https://github.com/Daye-Lee18/cpp-project-book
   path_to_book: ""
   branch: main
 html:
