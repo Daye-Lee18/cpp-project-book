@@ -62,6 +62,34 @@ c.name = "Kim";
 c.phone = "010-1111-2222";
 ```
 
+<details>
+<summary><b>class 개념 더 알아보기</b></summary>
+
+**클래스란?**
+클래스는 "새로운 자료형을 직접 만드는 설계도"입니다. `int`, `double`처럼 C++가 미리 만들어 둔 타입 외에, 내가 필요한 타입(`Contact`, `Student`, `Book` 등)을 직접 정의할 수 있습니다.
+
+**클래스 = 데이터 + 기능**
+- **멤버 변수**: 객체가 가지는 데이터 (예: `name`, `phone`)
+- **멤버 함수**: 객체가 할 수 있는 동작 (예: `print()`)
+
+**객체란?**
+설계도(class)로 찍어낸 실제 물건입니다.
+```cpp
+Contact c1;  // c1은 Contact라는 설계도로 만든 객체
+Contact c2;  // c2도 같은 설계도로 만든 또 다른 객체
+```
+`c1`과 `c2`는 같은 종류지만 서로 다른 데이터를 가질 수 있습니다.
+
+**왜 클래스를 쓸까?**
+- 관련 있는 데이터를 한 덩어리로 묶을 수 있다 (이름과 전화번호를 따로 관리하지 않아도 됨)
+- 데이터를 다루는 함수까지 함께 묶을 수 있다 (`print()`를 어디 두지 고민할 필요 없음)
+- 같은 형태의 데이터를 여러 개 만들기 쉽다
+
+**struct와의 차이**
+`struct`도 데이터를 묶을 수 있지만, C++에서 `class`는 기본이 `private`, `struct`는 기본이 `public`입니다. 그 외에는 거의 같습니다.
+
+</details>
+
 ## 3단계: 출력 기능을 멤버 함수로 만들기
 
 연락처 출력 방식도 `Contact` 안에 넣을 수 있습니다.
@@ -165,6 +193,56 @@ int main() {
 ```
 
 ## 프로젝트 v2: vector에 여러 연락처 저장하기
+
+<details>
+<summary><b>vector 개념 더 알아보기</b></summary>
+
+**vector란?**
+`vector`는 "크기가 자동으로 늘어나는 배열"입니다. C++ 표준 라이브러리(STL)에서 제공합니다.
+
+**배열과의 차이**
+| 항목 | 배열 (`int arr[3]`) | vector (`vector<int> v`) |
+| --- | --- | --- |
+| 크기 변경 | 불가능 (고정) | 가능 (`push_back`으로 자동 확장) |
+| 크기 알기 | 직접 변수로 관리 | `v.size()` |
+| 함수에 전달 | 크기도 같이 넘겨야 함 | vector 하나만 넘기면 됨 |
+
+**기본 사용법**
+```cpp
+vector<int> v;          // 빈 vector
+v.push_back(10);        // 뒤에 값 추가 → [10]
+v.push_back(20);        // → [10, 20]
+v.push_back(30);        // → [10, 20, 30]
+
+cout << v[0] << endl;   // 배열처럼 인덱스 접근 가능
+cout << v.size() << endl; // 3
+```
+
+**`vector<T>`의 의미**
+`<T>` 부분에는 저장할 값의 타입을 적습니다. 어떤 타입이든 담을 수 있습니다.
+```cpp
+vector<int> scores;        // 정수를 담는 vector
+vector<string> names;      // 문자열을 담는 vector
+vector<Contact> contacts;  // Contact 객체를 담는 vector
+```
+
+**범위 기반 for문**
+vector를 처음부터 끝까지 돌 때는 짧게 쓸 수 있습니다.
+```cpp
+for (int x : v) {
+    cout << x << endl;
+}
+```
+
+**왜 배열 대신 vector를 쓸까?**
+- 연락처가 몇 개 들어올지 미리 모를 때도 유연하게 늘릴 수 있다
+- 크기를 따로 관리하지 않아도 된다
+- 일반적으로 더 안전하고 쓰기 편하다
+
+**주의**
+`vector`를 쓰려면 `#include <vector>`를 꼭 추가해야 합니다.
+
+</details>
 
 ```cpp
 #include <iostream>
