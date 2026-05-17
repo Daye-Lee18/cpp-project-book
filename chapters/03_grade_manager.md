@@ -60,11 +60,11 @@ cout << scores[1] << endl;
 cout << scores[2] << endl;
 ```
 
-배열의 위치는 0부터 시작합니다. `scores[0]`은 첫 번째 점수입니다.
+배열의 위치는 0부터 시작합니다. <mark>scores[0]</mark> 은 첫 번째 점수입니다.
 
 ## 3단계: 반복문으로 배열 출력하기
 
-배열의 모든 값을 출력할 때는 `for` 반복문을 사용하면 코드가 짧아집니다.
+배열의 모든 값을 출력할 때는 <mark>for</mark> 반복문을 사용하면 코드가 짧아집니다.
 
 ```cpp
 const int SIZE = 3;
@@ -96,11 +96,11 @@ for (int i = 0; i < SIZE; i++) {
 }
 ```
 
-`names[1]`과 `scores[1]`은 둘 다 두 번째 학생인 Lee의 정보입니다.
+<mark>names[1]</mark> 과 <mark>scores[1]</mark> 은 둘 다 두 번째 학생인 Lee의 정보입니다.
 
 ## 5단계: 평균 계산을 함수로 분리하기
 
-평균 계산 코드를 함수로 만들면 `main` 함수가 더 읽기 쉬워집니다.
+평균 계산 코드를 함수로 만들면 <mark>main</mark> 함수가 더 읽기 쉬워집니다.
 
 ```cpp
 double average(int scores[], int size) {
@@ -204,7 +204,7 @@ int main() {
 cout << scores[3] << endl;
 ```
 
-크기가 3인 배열의 인덱스는 `0`, `1`, `2`만 사용할 수 있습니다.
+크기가 3인 배열의 인덱스는 <mark>0</mark>, <mark>1</mark>, <mark>2</mark>만 사용할 수 있습니다.
 
 ### 정수 나눗셈으로 평균을 구한 경우
 
@@ -212,7 +212,7 @@ cout << scores[3] << endl;
 return total / size;
 ```
 
-소수점 평균이 필요하면 둘 중 하나를 `double`로 바꿔야 합니다.
+소수점 평균이 필요하면 둘 중 하나를 <mark>double</mark>로 바꿔야 합니다.
 
 ```cpp
 return static_cast<double>(total) / size;
@@ -220,7 +220,7 @@ return static_cast<double>(total) / size;
 
 ### 배열 크기를 함수 안에서 모르는 경우
 
-배열을 함수로 넘기면 함수는 배열 크기를 자동으로 알지 못합니다. 그래서 `size`도 함께 전달합니다.
+배열을 함수로 넘기면 함수는 배열 크기를 자동으로 알지 못합니다. 그래서 <mark>size</mark>도 함께 전달합니다.
 
 ```cpp
 double average(int scores[], int size)

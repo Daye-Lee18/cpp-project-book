@@ -17,3 +17,11 @@ parse:
     - colon_fence
     - deflist
     - html_image
+
+sphinx:
+  config:
+    html_static_path: ["_static"]
+    html_js_files:
+      - notranslate.js
+    html_css_files:
+      - custom.css

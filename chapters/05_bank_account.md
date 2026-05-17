@@ -53,7 +53,7 @@ private:
 };
 ```
 
-`balance`를 `private`에 두면 클래스 밖에서 직접 수정할 수 없습니다.
+<mark>balance</mark>를 <mark>private</mark>에 두면 클래스 밖에서 직접 수정할 수 없습니다.
 
 ## 3단계: 생성자로 초기값 넣기
 
@@ -93,7 +93,7 @@ void deposit(int amount) {
 
 ## 5단계: 출금 실패 처리하기
 
-출금은 잔액이 충분할 때만 성공해야 합니다. 성공 여부를 `bool`로 반환합니다.
+출금은 잔액이 충분할 때만 성공해야 합니다. 성공 여부를 <mark>bool</mark>로 반환합니다.
 
 ```cpp
 bool withdraw(int amount) {
@@ -151,7 +151,7 @@ void deposit(int amount) {
 }
 ```
 
-`main` 함수에서 다음처럼 호출합니다.
+<mark>main</mark> 함수에서 다음처럼 호출합니다.
 
 ```cpp
 account.deposit(5000);
@@ -211,7 +211,7 @@ int main() {
 account.balance = 0;
 ```
 
-`balance`는 `private`이므로 클래스 밖에서 직접 접근할 수 없습니다. 잔액 변경은 `deposit`과 `withdraw`를 통해 처리합니다.
+<mark>balance</mark>는 <mark>private</mark>이므로 클래스 밖에서 직접 접근할 수 없습니다. 잔액 변경은 <mark>deposit</mark>과 <mark>withdraw</mark>를 통해 처리합니다.
 
 ### 출금 실패를 확인하지 않은 경우
 
@@ -219,7 +219,7 @@ account.balance = 0;
 account.withdraw(50000);
 ```
 
-함수가 `bool`을 반환한다면 결과를 확인하는 습관이 필요합니다.
+함수가 <mark>bool</mark>을 반환한다면 결과를 확인하는 습관이 필요합니다.
 
 ```cpp
 if (!account.withdraw(50000)) {
@@ -240,7 +240,7 @@ account.deposit(-1000);
 - 출금 실패 메시지를 출력하세요.
 - 입금액과 출금액이 0 이하이면 거부하세요.
 - 계좌번호 멤버 변수를 추가하세요.
-- 여러 계좌를 `vector`로 관리하세요.
+- 여러 계좌를 <mark>vector</mark>로 관리하세요.
 
 ## 체크리스트
 
