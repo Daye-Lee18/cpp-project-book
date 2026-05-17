@@ -11,15 +11,15 @@ Kim - 010-1111-2222
 Lee - 010-3333-4444
 ```
 
-이번 장의 핵심은 관련 있는 데이터를 하나의 타입으로 묶고, 여러 객체를 `vector`에 저장하는 것입니다.
+이번 장의 핵심은 관련 있는 데이터를 하나의 타입으로 묶고, 여러 객체를 <mark>vector</mark>에 저장하는 것입니다.
 
 ## 오늘 배울 개념
 
-- `class`로 새 자료형 만들기
+- <mark>class</mark>로 새 자료형 만들기
 - 멤버 변수와 멤버 함수 구분하기
 - 생성자로 객체 초기값 설정하기
-- `private`과 `public`으로 접근 범위 나누기
-- `vector`에 객체 여러 개 저장하기
+- <mark>private</mark>과 <mark>public</mark>으로 접근 범위 나누기
+- <mark>vector</mark>에 객체 여러 개 저장하기
 
 ## 1단계: 이름과 전화번호 출력하기
 
@@ -66,11 +66,11 @@ c.phone = "010-1111-2222";
 <summary><b>class 개념 더 알아보기</b></summary>
 
 **클래스란?**
-클래스는 "새로운 자료형을 직접 만드는 설계도"입니다. `int`, `double`처럼 C++가 미리 만들어 둔 타입 외에, 내가 필요한 타입(`Contact`, `Student`, `Book` 등)을 직접 정의할 수 있습니다.
+클래스는 "새로운 자료형을 직접 만드는 설계도"입니다. <mark>int</mark>, <mark>double</mark>처럼 C++가 미리 만들어 둔 타입 외에, 내가 필요한 타입(<mark>Contact</mark>, <mark>Student</mark>, <mark>Book</mark> 등)을 직접 정의할 수 있습니다.
 
 **클래스 = 데이터 + 기능**
-- **멤버 변수**: 객체가 가지는 데이터 (예: `name`, `phone`)
-- **멤버 함수**: 객체가 할 수 있는 동작 (예: `print()`)
+- **멤버 변수**: 객체가 가지는 데이터 (예: <mark>name</mark>, <mark>phone</mark>)
+- **멤버 함수**: 객체가 할 수 있는 동작 (예: <mark>print()</mark>)
 
 **객체란?**
 설계도(class)로 찍어낸 실제 물건입니다.
@@ -78,21 +78,21 @@ c.phone = "010-1111-2222";
 Contact c1;  // c1은 Contact라는 설계도로 만든 객체
 Contact c2;  // c2도 같은 설계도로 만든 또 다른 객체
 ```
-`c1`과 `c2`는 같은 종류지만 서로 다른 데이터를 가질 수 있습니다.
+<mark>c1</mark>과 <mark>c2</mark>는 같은 종류지만 서로 다른 데이터를 가질 수 있습니다.
 
 **왜 클래스를 쓸까?**
 - 관련 있는 데이터를 한 덩어리로 묶을 수 있다 (이름과 전화번호를 따로 관리하지 않아도 됨)
-- 데이터를 다루는 함수까지 함께 묶을 수 있다 (`print()`를 어디 두지 고민할 필요 없음)
+- 데이터를 다루는 함수까지 함께 묶을 수 있다 (<mark>print()</mark>를 어디 두지 고민할 필요 없음)
 - 같은 형태의 데이터를 여러 개 만들기 쉽다
 
 **struct와의 차이**
-`struct`도 데이터를 묶을 수 있지만, C++에서 `class`는 기본이 `private`, `struct`는 기본이 `public`입니다. 그 외에는 거의 같습니다.
+<mark>struct</mark>도 데이터를 묶을 수 있지만, C++에서 <mark>class</mark>는 기본이 <mark>private</mark>, <mark>struct</mark>는 기본이 <mark>public</mark>입니다. 그 외에는 거의 같습니다.
 
 </details>
 
 ## 3단계: 출력 기능을 멤버 함수로 만들기
 
-연락처 출력 방식도 `Contact` 안에 넣을 수 있습니다.
+연락처 출력 방식도 <mark>Contact</mark> 안에 넣을 수 있습니다.
 
 ```cpp
 class Contact {
@@ -141,7 +141,7 @@ Contact c("Kim", "010-1111-2222");
 
 ## 5단계: private으로 데이터 보호하기
 
-클래스 밖에서 멤버 변수를 마음대로 바꾸지 못하게 하려면 `private`에 둡니다. 대신 필요한 기능은 `public` 함수로 제공합니다.
+클래스 밖에서 멤버 변수를 마음대로 바꾸지 못하게 하려면 <mark>private</mark>에 둡니다. 대신 필요한 기능은 <mark>public</mark> 함수로 제공합니다.
 
 ```cpp
 class Contact {
@@ -198,13 +198,13 @@ int main() {
 <summary><b>vector 개념 더 알아보기</b></summary>
 
 **vector란?**
-`vector`는 "크기가 자동으로 늘어나는 배열"입니다. C++ 표준 라이브러리(STL)에서 제공합니다.
+<mark>vector</mark>는 "크기가 자동으로 늘어나는 배열"입니다. C++ 표준 라이브러리(STL)에서 제공합니다.
 
 **배열과의 차이**
-| 항목 | 배열 (`int arr[3]`) | vector (`vector<int> v`) |
+| 항목 | 배열 (<mark>int arr[3]</mark>) | vector (<mark>vector&lt;int&gt; v</mark>) |
 | --- | --- | --- |
-| 크기 변경 | 불가능 (고정) | 가능 (`push_back`으로 자동 확장) |
-| 크기 알기 | 직접 변수로 관리 | `v.size()` |
+| 크기 변경 | 불가능 (고정) | 가능 (<mark>push_back</mark>으로 자동 확장) |
+| 크기 알기 | 직접 변수로 관리 | <mark>v.size()</mark> |
 | 함수에 전달 | 크기도 같이 넘겨야 함 | vector 하나만 넘기면 됨 |
 
 **기본 사용법**
@@ -218,8 +218,8 @@ cout << v[0] << endl;   // 배열처럼 인덱스 접근 가능
 cout << v.size() << endl; // 3
 ```
 
-**`vector<T>`의 의미**
-`<T>` 부분에는 저장할 값의 타입을 적습니다. 어떤 타입이든 담을 수 있습니다.
+**<mark>vector&lt;T&gt;</mark>의 의미**
+<mark>&lt;T&gt;</mark> 부분에는 저장할 값의 타입을 적습니다. 어떤 타입이든 담을 수 있습니다.
 ```cpp
 vector<int> scores;        // 정수를 담는 vector
 vector<string> names;      // 문자열을 담는 vector
@@ -235,7 +235,7 @@ for (int x : v) {
 ```
 
 **값 변경하기**
-배열처럼 `[]`로 특정 자리의 값을 바꿀 수 있습니다. 단, 그 인덱스에 이미 값이 들어 있어야 합니다.
+배열처럼 <mark>[]</mark>로 특정 자리의 값을 바꿀 수 있습니다. 단, 그 인덱스에 이미 값이 들어 있어야 합니다.
 ```cpp
 vector<int> v = {10, 20, 30, 40};
 v[2] = 99;              // → [10, 20, 99, 40]
@@ -251,10 +251,10 @@ v.push_back(1);         // ✅ 먼저 자리를 만든 다음 사용
 **값 삭제하기**
 | 메서드 | 동작 | 예시 |
 | --- | --- | --- |
-| `v.pop_back()` | 맨 뒤 값 1개 삭제 | `[10,20,30] → [10,20]` |
-| `v.erase(v.begin() + i)` | i번째 값 1개 삭제 | `[10,20,30]`에서 `i=1` → `[10,30]` |
-| `v.erase(v.begin()+a, v.begin()+b)` | a부터 b 직전까지 구간 삭제 | `[10,20,30,40]`에서 `(1,3)` → `[10,40]` |
-| `v.clear()` | 모든 값 삭제 (size = 0) | `[10,20,30] → []` |
+| <mark>v.pop_back()</mark> | 맨 뒤 값 1개 삭제 | <mark>[10,20,30] → [10,20]</mark> |
+| <mark>v.erase(v.begin() + i)</mark> | i번째 값 1개 삭제 | <mark>[10,20,30]</mark>에서 <mark>i=1</mark> → <mark>[10,30]</mark> |
+| <mark>v.erase(v.begin()+a, v.begin()+b)</mark> | a부터 b 직전까지 구간 삭제 | <mark>[10,20,30,40]</mark>에서 <mark>(1,3)</mark> → <mark>[10,40]</mark> |
+| <mark>v.clear()</mark> | 모든 값 삭제 (size = 0) | <mark>[10,20,30] → []</mark> |
 
 ```cpp
 vector<int> v = {10, 20, 30, 40, 50};
@@ -282,7 +282,7 @@ v.resize(10);    // 크기를 10으로 맞춤 (모자라면 0으로 채움, 넘�
 ```
 
 **주의: 반복문 안에서 erase**
-for문으로 vector를 돌면서 `erase`로 지우면 인덱스가 한 칸씩 당겨져서 값을 건너뛸 수 있습니다.
+for문으로 vector를 돌면서 <mark>erase</mark>로 지우면 인덱스가 한 칸씩 당겨져서 값을 건너뛸 수 있습니다.
 ```cpp
 // ❌ 위험: 짝수만 지우려고 했지만 일부를 건너뜀
 for (int i = 0; i < v.size(); i++) {
@@ -301,7 +301,7 @@ for (int i = v.size() - 1; i >= 0; i--) {
 - 일반적으로 더 안전하고 쓰기 편하다
 
 **주의**
-`vector`를 쓰려면 `#include <vector>`를 꼭 추가해야 합니다.
+<mark>vector</mark>를 쓰려면 <mark>#include &lt;vector&gt;</mark>를 꼭 추가해야 합니다.
 
 </details>
 
@@ -364,7 +364,7 @@ contacts.push_back(Contact(name, phone));
 contact.name = "Park";
 ```
 
-`name`이 `private`이면 클래스 밖에서 직접 접근할 수 없습니다. 값을 바꾸는 기능이 필요하면 public 멤버 함수를 만들어야 합니다.
+<mark>name</mark>이 <mark>private</mark>이면 클래스 밖에서 직접 접근할 수 없습니다. 값을 바꾸는 기능이 필요하면 public 멤버 함수를 만들어야 합니다.
 
 ### vector 헤더를 빠뜨린 경우
 
@@ -372,7 +372,7 @@ contact.name = "Park";
 vector<Contact> contacts;
 ```
 
-`vector`를 사용하려면 파일 위쪽에 다음 코드를 추가해야 합니다.
+<mark>vector</mark>를 사용하려면 파일 위쪽에 다음 코드를 추가해야 합니다.
 
 ```cpp
 #include <vector>
@@ -402,5 +402,5 @@ Contact c("Kim", "010-1111-2222");
 - 클래스를 정의할 수 있다.
 - 객체를 생성하고 멤버 함수를 호출할 수 있다.
 - 생성자로 객체 초기값을 설정할 수 있다.
-- `private`과 `public`의 차이를 설명할 수 있다.
-- `vector`에 객체를 저장하고 반복문으로 출력할 수 있다.
+- <mark>private</mark>과 <mark>public</mark>의 차이를 설명할 수 있다.
+- <mark>vector</mark>에 객체를 저장하고 반복문으로 출력할 수 있다.

@@ -1,0 +1,14 @@
+mark {
+  background-color: #fff3b0;
+  color: inherit;
+  font-weight: 700;
+  font-family: "SFMono-Regular", "Menlo", "Consolas", monospace;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+html[data-theme="dark"] mark,
+.dark mark {
+  background-color: #6b5b1a;
+  color: #fff8d5;
+}
