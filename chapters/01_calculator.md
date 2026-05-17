@@ -20,10 +20,10 @@
 
 ## 오늘 배울 개념
 
-- `cout`으로 화면에 출력하기
+- <mark>cout</mark>으로 화면에 출력하기
 - 변수에 값을 저장하기
-- `cin`으로 사용자 입력 받기
-- `if`, `else if`, `else`로 경우 나누기
+- <mark>cin</mark>으로 사용자 입력 받기
+- <mark>if</mark>, <mark>else if</mark>, <mark>else</mark>로 경우 나누기
 - 나누기처럼 조심해야 하는 연산 처리하기
 
 ## 1단계: 화면에 글자 출력하기
@@ -42,11 +42,11 @@ int main() {
 
 ### 코드 읽기
 
-- `#include <iostream>`: 입력과 출력을 사용하기 위해 필요한 준비입니다.
-- `int main()`: 프로그램이 시작되는 함수입니다.
-- `cout`: 화면에 값을 출력할 때 사용합니다.
-- `endl`: 줄을 바꿉니다.
-- `return 0`: 프로그램이 정상적으로 끝났다는 뜻입니다.
+- <mark>#include &lt;iostream&gt;</mark>: 입력과 출력을 사용하기 위해 필요한 준비입니다.
+- <mark>int main()</mark>: 프로그램이 시작되는 함수입니다.
+- <mark>cout</mark>: 화면에 값을 출력할 때 사용합니다.
+- <mark>endl</mark>: 줄을 바꿉니다.
+- <mark>return 0</mark>: 프로그램이 정상적으로 끝났다는 뜻입니다.
 
 ### 바로 해보기
 
@@ -80,7 +80,7 @@ int main() {
 ### 생각해 보기
 
 - <mark>a</mark>와 <mark>b</mark>의 값을 바꾸면 출력 결과도 바뀝니다.
-- `int`는 정수를 저장하는 자료형입니다.
+- <mark>int</mark>는 정수를 저장하는 자료형입니다.
 - <mark>10 / 3</mark>의 결과가 <mark>3.333...</mark>이 아니라 <mark>3</mark>으로 나오는 이유는 <mark>int</mark>끼리 나누었기 때문입니다.
 
 소수점 결과가 필요하면 <mark>double</mark>을 사용합니다.
@@ -156,11 +156,11 @@ if (op == '+') {
 
 ### 코드 읽기
 
-- `op == '+'`: <mark>op</mark>에 저장된 값이 <mark>+</mark>인지 비교합니다.
-- `else if`: 앞 조건이 아니면 다음 조건을 검사합니다.
-- `else`: 어떤 조건에도 맞지 않을 때 실행됩니다.
+- <mark>op == '+'</mark>: <mark>op</mark>에 저장된 값이 <mark>+</mark>인지 비교합니다.
+- <mark>else if</mark>: 앞 조건이 아니면 다음 조건을 검사합니다.
+- <mark>else</mark>: 어떤 조건에도 맞지 않을 때 실행됩니다.
 
-`=`와 `==`는 다릅니다.
+<mark>=</mark>와 <mark>==</mark>는 다릅니다.
 
 ```cpp
 op = '+';   // op에 '+'를 저장한다
@@ -279,7 +279,7 @@ cout << a + b << endl
 cout << a + b << endl;
 ```
 
-### `=`와 `==`를 헷갈린 경우
+### <mark>=</mark>와 <mark>==</mark>를 헷갈린 경우
 
 ```cpp
 if (op = '+') {
@@ -311,8 +311,8 @@ if (op == '+') {
 
 ## 체크리스트
 
-- `cout`으로 원하는 문장을 출력할 수 있다.
-- `cin`으로 숫자와 문자를 입력받을 수 있다.
-- `int`와 `double`의 차이를 설명할 수 있다.
-- `if`, `else if`, `else`로 경우를 나눌 수 있다.
+- <mark>cout</mark>으로 원하는 문장을 출력할 수 있다.
+- <mark>cin</mark>으로 숫자와 문자를 입력받을 수 있다.
+- <mark>int</mark>와 <mark>double</mark>의 차이를 설명할 수 있다.
+- <mark>if</mark>, <mark>else if</mark>, <mark>else</mark>로 경우를 나눌 수 있다.
 - 0으로 나누는 상황을 조건문으로 막을 수 있다.

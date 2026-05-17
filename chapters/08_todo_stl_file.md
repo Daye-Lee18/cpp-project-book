@@ -15,11 +15,11 @@ Build project
 
 ## 오늘 배울 개념
 
-- `vector`에 문자열 여러 개 저장하기
-- `push_back`으로 데이터 추가하기
-- `ofstream`으로 파일에 쓰기
-- `ifstream`으로 파일에서 읽기
-- `getline`으로 한 줄씩 읽기
+- <mark>vector</mark>에 문자열 여러 개 저장하기
+- <mark>push_back</mark>으로 데이터 추가하기
+- <mark>ofstream</mark>으로 파일에 쓰기
+- <mark>ifstream</mark>으로 파일에서 읽기
+- <mark>getline</mark>으로 한 줄씩 읽기
 
 ## 1단계: 할 일 하나 출력하기
 
@@ -64,9 +64,9 @@ int main() {
 
 ### 코드 읽기
 
-- `vector<string>`: 문자열을 여러 개 저장하는 컨테이너입니다.
-- `push_back`: vector의 끝에 값을 추가합니다.
-- `for (string todo : todos)`: todos 안의 값을 하나씩 꺼내 반복합니다.
+- <mark>vector&lt;string&gt;</mark>: 문자열을 여러 개 저장하는 컨테이너입니다.
+- <mark>push_back</mark>: vector의 끝에 값을 추가합니다.
+- <mark>for (string todo : todos)</mark>: todos 안의 값을 하나씩 꺼내 반복합니다.
 
 ## 3단계: 파일에 저장하기
 
@@ -226,8 +226,8 @@ if (!in) {
 
 ## 체크리스트
 
-- `vector`에 데이터를 추가할 수 있다.
+- <mark>vector</mark>에 데이터를 추가할 수 있다.
 - 범위 기반 <mark>for</mark>문으로 vector를 출력할 수 있다.
-- `ofstream`으로 파일에 쓸 수 있다.
-- `ifstream`으로 파일에서 읽을 수 있다.
-- `getline`으로 한 줄씩 읽을 수 있다.
+- <mark>ofstream</mark>으로 파일에 쓸 수 있다.
+- <mark>ifstream</mark>으로 파일에서 읽을 수 있다.
+- <mark>getline</mark>으로 한 줄씩 읽을 수 있다.

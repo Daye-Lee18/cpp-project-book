@@ -36,11 +36,11 @@
 
 | 프로젝트 | 핵심 클래스 예시 | 주요 데이터 |
 |---|---|---|
-| 도서 관리 | `Book` | 제목, 저자, 대출 여부 |
-| 성적 관리 | `Student` | 이름, 점수, 등급 |
-| 은행 계좌 | `Account` | 계좌번호, 소유자, 잔액 |
-| Todo List | `Todo` | 내용, 완료 여부 |
-| 영화 예매 | `Movie`, `Reservation` | 영화명, 좌석, 예매자 |
+| 도서 관리 | <mark>Book</mark> | 제목, 저자, 대출 여부 |
+| 성적 관리 | <mark>Student</mark> | 이름, 점수, 등급 |
+| 은행 계좌 | <mark>Account</mark> | 계좌번호, 소유자, 잔액 |
+| Todo List | <mark>Todo</mark> | 내용, 완료 여부 |
+| 영화 예매 | <mark>Movie</mark>, <mark>Reservation</mark> | 영화명, 좌석, 예매자 |
 
 클래스는 프로그램에서 계속 함께 다니는 데이터를 묶는 단위입니다.
 
@@ -147,7 +147,7 @@ Effective C++,Meyers,1
 ## 필수 요구사항
 
 - 클래스 2개 이상 사용
-- `vector` 또는 `map` 사용
+- <mark>vector</mark> 또는 <mark>map</mark> 사용
 - 함수로 기능 분리
 - 파일 저장 또는 불러오기
 - 예외 처리 또는 입력 검증 포함

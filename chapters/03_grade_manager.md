@@ -18,8 +18,8 @@ Average: 89
 ## 오늘 배울 개념
 
 - 배열에 여러 값 저장하기
-- `for` 반복문으로 배열 순회하기
-- `string`으로 이름 저장하기
+- <mark>for</mark> 반복문으로 배열 순회하기
+- <mark>string</mark>으로 이름 저장하기
 - 함수로 계산 코드 분리하기
 - 정수 나눗셈과 실수 나눗셈 구분하기
 
@@ -44,9 +44,9 @@ int main() {
 
 ### 코드 읽기
 
-- `string`: 문자열을 저장하는 자료형입니다.
-- `int`: 정수 점수를 저장합니다.
-- `<<`: 여러 값을 이어서 출력할 수 있습니다.
+- <mark>string</mark>: 문자열을 저장하는 자료형입니다.
+- <mark>int</mark>: 정수 점수를 저장합니다.
+- <mark>&lt;&lt;</mark>: 여러 값을 이어서 출력할 수 있습니다.
 
 ## 2단계: 배열로 여러 점수 저장하기
 
@@ -77,10 +77,10 @@ for (int i = 0; i < SIZE; i++) {
 
 ### 코드 읽기
 
-- `const int SIZE = 3`: 배열 크기를 이름으로 표현합니다.
-- `i = 0`: 첫 번째 위치부터 시작합니다.
-- `i < SIZE`: 배열 범위를 넘지 않을 때만 반복합니다.
-- `i++`: 다음 위치로 이동합니다.
+- <mark>const int SIZE = 3</mark>: 배열 크기를 이름으로 표현합니다.
+- <mark>i = 0</mark>: 첫 번째 위치부터 시작합니다.
+- <mark>i &lt; SIZE</mark>: 배열 범위를 넘지 않을 때만 반복합니다.
+- <mark>i++</mark>: 다음 위치로 이동합니다.
 
 ## 4단계: 이름과 점수 함께 출력하기
 
@@ -116,10 +116,10 @@ double average(int scores[], int size) {
 
 ### 코드 읽기
 
-- `int scores[]`: 정수 배열을 함수로 받습니다.
-- `size`: 배열에 값이 몇 개 있는지 알려줍니다.
-- `total += scores[i]`: 총합에 현재 점수를 더합니다.
-- `static_cast<double>(total)`: 실수 나눗셈이 되도록 변환합니다.
+- <mark>int scores[]</mark>: 정수 배열을 함수로 받습니다.
+- <mark>size</mark>: 배열에 값이 몇 개 있는지 알려줍니다.
+- <mark>total += scores[i]</mark>: 총합에 현재 점수를 더합니다.
+- <mark>static_cast&lt;double&gt;(total)</mark>: 실수 나눗셈이 되도록 변환합니다.
 
 ## 프로젝트 v1: 점수 목록 출력하기
 
@@ -237,6 +237,6 @@ double average(int scores[], int size)
 
 - 배열에 여러 값을 저장할 수 있다.
 - 배열 인덱스가 0부터 시작한다는 것을 설명할 수 있다.
-- `for` 반복문으로 배열 전체를 순회할 수 있다.
+- <mark>for</mark> 반복문으로 배열 전체를 순회할 수 있다.
 - 함수를 만들어 평균 계산을 분리할 수 있다.
-- `static_cast<double>`이 필요한 상황을 설명할 수 있다.
+- <mark>static_cast&lt;double&gt;</mark>이 필요한 상황을 설명할 수 있다.

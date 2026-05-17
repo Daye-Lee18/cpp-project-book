@@ -15,11 +15,11 @@ Lee - 010-3333-4444
 
 ## 오늘 배울 개념
 
-- `class`로 새 자료형 만들기
+- <mark>class</mark>로 새 자료형 만들기
 - 멤버 변수와 멤버 함수 구분하기
 - 생성자로 객체 초기값 설정하기
-- `private`과 `public`으로 접근 범위 나누기
-- `vector`에 객체 여러 개 저장하기
+- <mark>private</mark>과 <mark>public</mark>으로 접근 범위 나누기
+- <mark>vector</mark>에 객체 여러 개 저장하기
 
 ## 1단계: 이름과 전화번호 출력하기
 
@@ -69,8 +69,8 @@ c.phone = "010-1111-2222";
 클래스는 "새로운 자료형을 직접 만드는 설계도"입니다. <mark>int</mark>, <mark>double</mark>처럼 C++가 미리 만들어 둔 타입 외에, 내가 필요한 타입(<mark>Contact</mark>, <mark>Student</mark>, <mark>Book</mark> 등)을 직접 정의할 수 있습니다.
 
 **클래스 = 데이터 + 기능**
-- **멤버 변수**: 객체가 가지는 데이터 (예: `name`, `phone`)
-- **멤버 함수**: 객체가 할 수 있는 동작 (예: `print()`)
+- **멤버 변수**: 객체가 가지는 데이터 (예: <mark>name</mark>, <mark>phone</mark>)
+- **멤버 함수**: 객체가 할 수 있는 동작 (예: <mark>print()</mark>)
 
 **객체란?**
 설계도(class)로 찍어낸 실제 물건입니다.
@@ -201,10 +201,10 @@ int main() {
 <mark>vector</mark>는 "크기가 자동으로 늘어나는 배열"입니다. C++ 표준 라이브러리(STL)에서 제공합니다.
 
 **배열과의 차이**
-| 항목 | 배열 (`int arr[3]`) | vector (`vector<int> v`) |
+| 항목 | 배열 (<mark>int arr[3]</mark>) | vector (<mark>vector&lt;int&gt; v</mark>) |
 | --- | --- | --- |
-| 크기 변경 | 불가능 (고정) | 가능 (`push_back`으로 자동 확장) |
-| 크기 알기 | 직접 변수로 관리 | `v.size()` |
+| 크기 변경 | 불가능 (고정) | 가능 (<mark>push_back</mark>으로 자동 확장) |
+| 크기 알기 | 직접 변수로 관리 | <mark>v.size()</mark> |
 | 함수에 전달 | 크기도 같이 넘겨야 함 | vector 하나만 넘기면 됨 |
 
 **기본 사용법**
@@ -218,7 +218,7 @@ cout << v[0] << endl;   // 배열처럼 인덱스 접근 가능
 cout << v.size() << endl; // 3
 ```
 
-**`vector<T>`의 의미**
+**<mark>vector&lt;T&gt;</mark>의 의미**
 <mark>&lt;T&gt;</mark> 부분에는 저장할 값의 타입을 적습니다. 어떤 타입이든 담을 수 있습니다.
 ```cpp
 vector<int> scores;        // 정수를 담는 vector
@@ -251,10 +251,10 @@ v.push_back(1);         // ✅ 먼저 자리를 만든 다음 사용
 **값 삭제하기**
 | 메서드 | 동작 | 예시 |
 | --- | --- | --- |
-| `v.pop_back()` | 맨 뒤 값 1개 삭제 | `[10,20,30] → [10,20]` |
-| `v.erase(v.begin() + i)` | i번째 값 1개 삭제 | `[10,20,30]`에서 `i=1` → `[10,30]` |
-| `v.erase(v.begin()+a, v.begin()+b)` | a부터 b 직전까지 구간 삭제 | `[10,20,30,40]`에서 `(1,3)` → `[10,40]` |
-| `v.clear()` | 모든 값 삭제 (size = 0) | `[10,20,30] → []` |
+| <mark>v.pop_back()</mark> | 맨 뒤 값 1개 삭제 | <mark>[10,20,30] → [10,20]</mark> |
+| <mark>v.erase(v.begin() + i)</mark> | i번째 값 1개 삭제 | <mark>[10,20,30]</mark>에서 <mark>i=1</mark> → <mark>[10,30]</mark> |
+| <mark>v.erase(v.begin()+a, v.begin()+b)</mark> | a부터 b 직전까지 구간 삭제 | <mark>[10,20,30,40]</mark>에서 <mark>(1,3)</mark> → <mark>[10,40]</mark> |
+| <mark>v.clear()</mark> | 모든 값 삭제 (size = 0) | <mark>[10,20,30] → []</mark> |
 
 ```cpp
 vector<int> v = {10, 20, 30, 40, 50};
@@ -402,5 +402,5 @@ Contact c("Kim", "010-1111-2222");
 - 클래스를 정의할 수 있다.
 - 객체를 생성하고 멤버 함수를 호출할 수 있다.
 - 생성자로 객체 초기값을 설정할 수 있다.
-- `private`과 `public`의 차이를 설명할 수 있다.
-- `vector`에 객체를 저장하고 반복문으로 출력할 수 있다.
+- <mark>private</mark>과 <mark>public</mark>의 차이를 설명할 수 있다.
+- <mark>vector</mark>에 객체를 저장하고 반복문으로 출력할 수 있다.
