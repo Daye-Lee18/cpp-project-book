@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>06. 도형 관리 시스템 &#8212; C++ 입문에서 프로젝트까지</title>
   
@@ -16,56 +17,65 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
   
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ea53f8ce" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/06_shape_polymorphism';</script>
-    <script src="../_static/notranslate.js?v=1613f6e6"></script>
+    <script src="../_static/notranslate.js"></script>
+    <script src="../_static/notranslate.js"></script>
+    <script src="../_static/notranslate.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="07. 템플릿과 예외 처리" href="07_template_exception.html" />
     <link rel="prev" title="05. 은행 계좌 시스템" href="05_bank_account.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -81,19 +91,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -101,7 +100,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -109,8 +107,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -126,7 +124,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -156,15 +155,11 @@
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -200,9 +195,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -349,7 +349,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -363,25 +363,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -437,9 +429,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="id1">
-<h1>06. 도형 관리 시스템<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1>06. 도형 관리 시스템<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <section id="id2">
-<h2>오늘의 결과물<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2>오늘의 결과물<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>이번 장에서는 여러 도형의 넓이를 같은 방식으로 계산하는 도형 관리 시스템을 만듭니다.</p>
 <p>실행 예시는 다음과 같습니다.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>12
@@ -449,7 +441,7 @@ document.write(`
 <p>이번 장의 핵심은 서로 다른 클래스의 객체를 부모 타입으로 함께 다루는 것입니다. 사각형과 원은 계산 방법이 다르지만, 둘 다 <mark>area()</mark>라는 같은 이름의 함수로 넓이를 구하게 만듭니다.</p>
 </section>
 <section id="id3">
-<h2>오늘 배울 개념<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2>오늘 배울 개념<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>아래 토글을 펼치면 각 개념의 간단한 설명을 볼 수 있습니다.</p>
 <details>
 <summary><b>부모 클래스와 자식 클래스 만들기</b></summary>
@@ -513,7 +505,7 @@ document.write(`
 </details>
 </section>
 <section id="id4">
-<h2>1단계: 사각형 넓이 구하기<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<h2>1단계: 사각형 넓이 구하기<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
 <p>먼저 사각형 하나의 넓이를 구하는 클래스를 만듭니다.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
@@ -544,7 +536,7 @@ document.write(`
 </div>
 </section>
 <section id="id5">
-<h2>2단계: 원 클래스 추가하기<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<h2>2단계: 원 클래스 추가하기<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
 <p>원은 반지름으로 넓이를 계산합니다.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Circle</span><span class="w"> </span><span class="p">{</span>
 <span class="k">private</span><span class="o">:</span>
@@ -564,7 +556,7 @@ document.write(`
 <p>사각형과 원은 내부 데이터가 다르지만, 둘 다 <mark>area()</mark>라는 함수를 가질 수 있습니다.</p>
 </section>
 <section id="id6">
-<h2>3단계: 공통 부모 클래스 만들기<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<h2>3단계: 공통 부모 클래스 만들기<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <p>도형들이 공통으로 가져야 하는 기능을 부모 클래스에 적습니다.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="w"> </span><span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
@@ -574,7 +566,7 @@ document.write(`
 </pre></div>
 </div>
 <section id="id7">
-<h3>코드 읽기<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<h3>코드 읽기<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><mark>virtual</mark>: 자식 클래스의 함수가 실행될 수 있게 합니다.</p></li>
 <li><p><mark>= 0</mark>: 부모 클래스에서는 구현하지 않고, 자식 클래스가 반드시 구현해야 한다는 뜻입니다.</p></li>
@@ -583,7 +575,7 @@ document.write(`
 </section>
 </section>
 <section id="id8">
-<h2>4단계: 상속으로 도형 만들기<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<h2>4단계: 상속으로 도형 만들기<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
 <p>자식 클래스는 <mark>Shape</mark>를 상속하고 <mark>area()</mark>를 구현합니다.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Rectangle</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Shape</span><span class="w"> </span><span class="p">{</span>
 <span class="k">private</span><span class="o">:</span>
@@ -602,7 +594,7 @@ document.write(`
 <p><mark>override</mark>는 부모 클래스의 가상 함수를 자식 클래스에서 다시 정의한다는 뜻입니다.</p>
 </section>
 <section id="vector">
-<h2>5단계: vector에 여러 도형 저장하기<a class="headerlink" href="#vector" title="Link to this heading">#</a></h2>
+<h2>5단계: vector에 여러 도형 저장하기<a class="headerlink" href="#vector" title="Permalink to this heading">#</a></h2>
 <p>사각형과 원은 서로 다른 타입입니다. 하지만 둘 다 <mark>Shape</mark>의 자식이므로 <mark>Shape*</mark>로 함께 저장할 수 있습니다.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Shape</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">shapes</span><span class="p">;</span>
 <span class="n">shapes</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Rectangle</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">));</span>
@@ -617,7 +609,7 @@ document.write(`
 </div>
 </section>
 <section id="v1">
-<h2>프로젝트 v1: 도형 하나의 넓이 계산하기<a class="headerlink" href="#v1" title="Link to this heading">#</a></h2>
+<h2>프로젝트 v1: 도형 하나의 넓이 계산하기<a class="headerlink" href="#v1" title="Permalink to this heading">#</a></h2>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
 
@@ -644,7 +636,7 @@ document.write(`
 </div>
 </section>
 <section id="v2">
-<h2>프로젝트 v2: 부모 클래스 도입하기<a class="headerlink" href="#v2" title="Link to this heading">#</a></h2>
+<h2>프로젝트 v2: 부모 클래스 도입하기<a class="headerlink" href="#v2" title="Permalink to this heading">#</a></h2>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Shape</span><span class="w"> </span><span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
 <span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">area</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -668,7 +660,7 @@ document.write(`
 </div>
 </section>
 <section id="v3">
-<h2>프로젝트 v3: 여러 도형 관리하기<a class="headerlink" href="#v3" title="Link to this heading">#</a></h2>
+<h2>프로젝트 v3: 여러 도형 관리하기<a class="headerlink" href="#v3" title="Permalink to this heading">#</a></h2>
 <p>최종 코드는 다음과 같습니다.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
@@ -724,16 +716,16 @@ document.write(`
 </div>
 </section>
 <section id="id9">
-<h2>자주 나는 에러<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<h2>자주 나는 에러<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
 <section id="virtual">
-<h3>부모 클래스의 소멸자를 virtual로 만들지 않은 경우<a class="headerlink" href="#virtual" title="Link to this heading">#</a></h3>
+<h3>부모 클래스의 소멸자를 virtual로 만들지 않은 경우<a class="headerlink" href="#virtual" title="Permalink to this heading">#</a></h3>
 <p>부모 포인터로 자식 객체를 삭제할 때는 부모 소멸자를 <mark>virtual</mark>로 만드는 것이 안전합니다.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">virtual</span><span class="w"> </span><span class="o">~</span><span class="n">Shape</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
 </pre></div>
 </div>
 </section>
 <section id="override">
-<h3>override 함수 이름이 틀린 경우<a class="headerlink" href="#override" title="Link to this heading">#</a></h3>
+<h3>override 함수 이름이 틀린 경우<a class="headerlink" href="#override" title="Permalink to this heading">#</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span><span class="w"> </span><span class="nf">areas</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
 <span class="p">}</span>
@@ -742,7 +734,7 @@ document.write(`
 <p>부모 클래스의 함수 이름은 <mark>area()</mark>입니다. 이름이 다르면 재정의가 아닙니다.</p>
 </section>
 <section id="delete">
-<h3>delete를 빠뜨린 경우<a class="headerlink" href="#delete" title="Link to this heading">#</a></h3>
+<h3>delete를 빠뜨린 경우<a class="headerlink" href="#delete" title="Permalink to this heading">#</a></h3>
 <p><mark>new</mark>로 만든 객체는 사용이 끝나면 <mark>delete</mark>해야 합니다.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Shape</span><span class="o">*</span><span class="w"> </span><span class="n">shape</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">shapes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">shape</span><span class="p">;</span>
@@ -752,7 +744,7 @@ document.write(`
 </section>
 </section>
 <section id="mission">
-<h2>Mission<a class="headerlink" href="#mission" title="Link to this heading">#</a></h2>
+<h2>Mission<a class="headerlink" href="#mission" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><mark>Triangle</mark> 클래스를 추가하세요.</p></li>
 <li><p>각 도형의 이름도 함께 출력하세요.</p></li>
@@ -761,7 +753,7 @@ document.write(`
 </ul>
 </section>
 <section id="id10">
-<h2>체크리스트<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<h2>체크리스트<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>부모 클래스와 자식 클래스를 만들 수 있다.</p></li>
 <li><p>순수 가상 함수의 의미를 설명할 수 있다.</p></li>
@@ -827,14 +819,16 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">오늘의 결과물</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">오늘 배울 개념</a></li>
@@ -905,8 +899,8 @@ By Daye Lee
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

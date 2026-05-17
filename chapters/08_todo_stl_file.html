@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>08. Todo List와 STL, 파일 입출력 &#8212; C++ 입문에서 프로젝트까지</title>
   
@@ -16,56 +17,65 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
   
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ea53f8ce" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/08_todo_stl_file';</script>
-    <script src="../_static/notranslate.js?v=1613f6e6"></script>
+    <script src="../_static/notranslate.js"></script>
+    <script src="../_static/notranslate.js"></script>
+    <script src="../_static/notranslate.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="09. Final Project" href="09_final_project.html" />
     <link rel="prev" title="07. 템플릿과 예외 처리" href="07_template_exception.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -81,19 +91,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -101,7 +100,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -109,8 +107,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -126,7 +124,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -156,15 +155,11 @@
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -200,9 +195,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -349,7 +349,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -363,25 +363,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -437,9 +429,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="todo-list-stl">
-<h1>08. Todo List와 STL, 파일 입출력<a class="headerlink" href="#todo-list-stl" title="Link to this heading">#</a></h1>
+<h1>08. Todo List와 STL, 파일 입출력<a class="headerlink" href="#todo-list-stl" title="Permalink to this heading">#</a></h1>
 <section id="id1">
-<h2>오늘의 결과물<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2>오늘의 결과물<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>이번 장에서는 할 일을 저장하고 파일로 내보낸 뒤 다시 읽어 오는 Todo List 프로그램을 만듭니다.</p>
 <p>실행 예시는 다음과 같습니다.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Study C++
@@ -449,7 +441,7 @@ Build project
 <p>이번 장의 핵심은 프로그램이 종료되어도 데이터를 남기는 방법입니다. <mark>vector</mark>에 저장한 할 일을 파일에 쓰고, 다시 파일에서 읽어 출력합니다.</p>
 </section>
 <section id="id2">
-<h2>오늘 배울 개념<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2>오늘 배울 개념<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><mark>vector</mark>에 문자열 여러 개 저장하기</p></li>
 <li><p><mark>push_back</mark>으로 데이터 추가하기</p></li>
@@ -459,7 +451,7 @@ Build project
 </ul>
 </section>
 <section id="id3">
-<h2>1단계: 할 일 하나 출력하기<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2>1단계: 할 일 하나 출력하기<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>먼저 문자열 변수 하나에 할 일을 저장하고 출력합니다.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
@@ -476,7 +468,7 @@ Build project
 </div>
 </section>
 <section id="vector">
-<h2>2단계: vector에 여러 할 일 저장하기<a class="headerlink" href="#vector" title="Link to this heading">#</a></h2>
+<h2>2단계: vector에 여러 할 일 저장하기<a class="headerlink" href="#vector" title="Permalink to this heading">#</a></h2>
 <p>할 일이 여러 개라면 <mark>vector&lt;string&gt;</mark>을 사용합니다.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
@@ -497,7 +489,7 @@ Build project
 </pre></div>
 </div>
 <section id="id4">
-<h3>코드 읽기<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3>코드 읽기<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><mark>vector&lt;string&gt;</mark>: 문자열을 여러 개 저장하는 컨테이너입니다.</p></li>
 <li><p><mark>push_back</mark>: vector의 끝에 값을 추가합니다.</p></li>
@@ -506,7 +498,7 @@ Build project
 </section>
 </section>
 <section id="id5">
-<h2>3단계: 파일에 저장하기<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<h2>3단계: 파일에 저장하기<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
 <p><mark>ofstream</mark>을 사용하면 파일에 내용을 쓸 수 있습니다.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fstream&gt;</span>
 
@@ -520,7 +512,7 @@ Build project
 <p>프로그램을 실행하면 같은 폴더에 <mark>todos.txt</mark> 파일이 만들어집니다.</p>
 </section>
 <section id="id6">
-<h2>4단계: 파일에서 읽기<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<h2>4단계: 파일에서 읽기<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <p><mark>ifstream</mark>을 사용하면 파일 내용을 읽을 수 있습니다.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ifstream</span><span class="w"> </span><span class="n">in</span><span class="p">(</span><span class="s">&quot;todos.txt&quot;</span><span class="p">);</span>
 <span class="n">string</span><span class="w"> </span><span class="n">line</span><span class="p">;</span>
@@ -535,7 +527,7 @@ Build project
 <p><mark>getline</mark>은 파일에서 한 줄을 읽어 <mark>line</mark>에 저장합니다. 읽을 줄이 없으면 반복문이 끝납니다.</p>
 </section>
 <section id="id7">
-<h2>5단계: 저장과 읽기 흐름 연결하기<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<h2>5단계: 저장과 읽기 흐름 연결하기<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <p>Todo List 프로그램의 기본 흐름은 다음과 같습니다.</p>
 <ol class="arabic simple">
 <li><p><mark>vector</mark>에 할 일을 저장합니다.</p></li>
@@ -545,7 +537,7 @@ Build project
 </ol>
 </section>
 <section id="v1-todo">
-<h2>프로젝트 v1: 메모리에 Todo 저장하기<a class="headerlink" href="#v1-todo" title="Link to this heading">#</a></h2>
+<h2>프로젝트 v1: 메모리에 Todo 저장하기<a class="headerlink" href="#v1-todo" title="Permalink to this heading">#</a></h2>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
@@ -566,7 +558,7 @@ Build project
 </div>
 </section>
 <section id="v2">
-<h2>프로젝트 v2: 파일에 저장하기<a class="headerlink" href="#v2" title="Link to this heading">#</a></h2>
+<h2>프로젝트 v2: 파일에 저장하기<a class="headerlink" href="#v2" title="Permalink to this heading">#</a></h2>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fstream&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
@@ -590,7 +582,7 @@ Build project
 </div>
 </section>
 <section id="v3">
-<h2>프로젝트 v3: 파일에서 다시 읽기<a class="headerlink" href="#v3" title="Link to this heading">#</a></h2>
+<h2>프로젝트 v3: 파일에서 다시 읽기<a class="headerlink" href="#v3" title="Permalink to this heading">#</a></h2>
 <p>최종 코드는 다음과 같습니다.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fstream&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
@@ -622,9 +614,9 @@ Build project
 </div>
 </section>
 <section id="id8">
-<h2>자주 나는 에러<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<h2>자주 나는 에러<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
 <section id="fstream">
-<h3>fstream 헤더를 빠뜨린 경우<a class="headerlink" href="#fstream" title="Link to this heading">#</a></h3>
+<h3>fstream 헤더를 빠뜨린 경우<a class="headerlink" href="#fstream" title="Permalink to this heading">#</a></h3>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ofstream</span><span class="w"> </span><span class="n">out</span><span class="p">(</span><span class="s">&quot;todos.txt&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -634,7 +626,7 @@ Build project
 </div>
 </section>
 <section id="id9">
-<h3>파일을 열었는지 확인하지 않은 경우<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<h3>파일을 열었는지 확인하지 않은 경우<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <p>실제 프로그램에서는 파일 열기에 실패할 수 있습니다.</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">ifstream</span><span class="w"> </span><span class="n">in</span><span class="p">(</span><span class="s">&quot;todos.txt&quot;</span><span class="p">);</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -644,12 +636,12 @@ Build project
 </div>
 </section>
 <section id="cin-getline">
-<h3>cin과 getline을 섞어 쓸 때 입력이 건너뛰어지는 경우<a class="headerlink" href="#cin-getline" title="Link to this heading">#</a></h3>
+<h3>cin과 getline을 섞어 쓸 때 입력이 건너뛰어지는 경우<a class="headerlink" href="#cin-getline" title="Permalink to this heading">#</a></h3>
 <p><mark>cin &gt;&gt; menu</mark> 다음에 <mark>getline</mark>을 바로 쓰면 남아 있는 줄바꿈 문자 때문에 입력이 건너뛰어질 수 있습니다. 이 경우 <mark>cin.ignore()</mark>가 필요합니다.</p>
 </section>
 </section>
 <section id="mission">
-<h2>Mission<a class="headerlink" href="#mission" title="Link to this heading">#</a></h2>
+<h2>Mission<a class="headerlink" href="#mission" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>메뉴를 추가해 할 일 추가, 목록 출력, 종료를 선택하게 만드세요.</p></li>
 <li><p>완료 여부를 함께 저장하세요.</p></li>
@@ -658,7 +650,7 @@ Build project
 </ul>
 </section>
 <section id="id10">
-<h2>체크리스트<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<h2>체크리스트<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><mark>vector</mark>에 데이터를 추가할 수 있다.</p></li>
 <li><p>범위 기반 <mark>for</mark>문으로 vector를 출력할 수 있다.</p></li>
@@ -724,14 +716,16 @@ Build project
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">오늘의 결과물</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">오늘 배울 개념</a></li>
@@ -802,8 +796,8 @@ By Daye Lee
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
